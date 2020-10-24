@@ -1,21 +1,25 @@
 <template>
-  <div>
-    <h3>
+  <div class="repos-container">
+    <h1>
       User The <span class="user_data">{{ this.user.name }}</span> with
       <span class="user_data">{{ this.user.followers }}</span> followers is
       following <span class="user_data">{{ this.user.following }}</span>
-    </h3>
-    <div v-if="userRepo.private">
-      <h3>
-        One repofor this user is
-        <span class="user_data">{{ userRepo.name }}</span> and it is private
-      </h3>
+    </h1>
+    <div v-if="userRepo.private" class="repo-container">
+        <md-toolbar md-elevation="1">
+            <h3 class="md-title">
+                One repofor this user is
+                <span class="user_data">{{ userRepo.name }}</span> and it is private
+            </h3>
+        </md-toolbar>
     </div>
-    <div v-else>
-      <h3>
-        One repo for this user is
-        <span class="user_data">{{ userRepo.name }} </span> it is not private
-      </h3>
+    <div v-else class="repo-container">
+        <md-toolbar md-elevation="1">
+            <h3 class="md-title">
+                One repo for this user is
+                <span class="user_data">{{ userRepo.name }} </span> it is not private
+            </h3>   
+        </md-toolbar>
     </div>
   </div>
 </template>
@@ -34,7 +38,6 @@ export default {
   },
   methods: {
     async getUserRepos() {
-      console.log("getRepos");
       try {
         const res = await getRepoFromGithub(this.user.login);
         this.userReposList = res.data;
@@ -48,10 +51,7 @@ export default {
   created() {
     if (this.user) {
       this.getUserRepos();
-      console.log("getRepos");
-    } else {
-      console.log("repos");
-    }
+    } 
   },
   beforeMount() {
     this.getUserRepos();
@@ -60,8 +60,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.repos-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.repo-container{
+    margin: 0 auto;
+}
 .user_data {
-  color: red;
+  color: #0070c9;
+}
+.md-title{
+    text-align: center;
 }
 </style>
 
