@@ -1,5 +1,5 @@
 <template>
-  <div v-if="displayList">
+  <div v-if="displayList" id="loadmore-btn">
     <h2>{{ displayList.length }} of {{ this.user.following }} Following</h2>
     <div class="list-container">
       <div class="displayList-container">
@@ -22,7 +22,7 @@
           </md-card>
         </div>
       </div>
-      <md-button :disabled="disabled" @click="loadMore" class="md-raised"
+      <md-button :disabled="disabled" @click="loadMore" class="md-raised" 
         >Load More
       </md-button>
     </div>
@@ -49,7 +49,6 @@ export default {
   methods: {
     async getUserFollowing() {
       this.loading = true;
-
       try {
         const res = await getFollowingFromGithub(
           this.user.login,
@@ -67,6 +66,7 @@ export default {
       this.loading = false;
     },
     async loadMore() {
+      document.getElementById("loadmore-btn").focus({preventScroll:true})
       this.page += 1;
       try {
         const res = await getFollowingFromGithub(
@@ -76,19 +76,24 @@ export default {
         );
         if (res.data.length) {
           this.displayList = [...this.displayList, ...res.data];
+
+          
         }
         if (res.data.length < 10) {
           this.disabled = true;
         }
+        
       } catch (err) {
         console.log(err);
       }
+      
     },
   },
   created() {
     if (this.user) {
       this.getUserFollowing();
     }
+    
   },
   beforeMount() {
     this.page = 1;
@@ -97,6 +102,9 @@ export default {
 
     this.getUserFollowing();
   },
+  updated(){
+    window.scrollTo(0, document.body.scrollHeight);
+  }
 };
 </script>
 

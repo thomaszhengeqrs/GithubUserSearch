@@ -35,7 +35,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+    .header{
+        display: fixed;
+    }
     .header-nav{
         display: flex;
         flex-direction: row;

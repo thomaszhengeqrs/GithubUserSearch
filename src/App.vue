@@ -8,7 +8,7 @@
       <router-view v-bind:user="user" />
     </div>
     <div v-else-if="error">
-      <h1>{{ error.message }}</h1>
+      <h1>User Not Found: {{ error.message }}</h1>
     </div>
     <div v-else>
       <h3>Welcome to Github User Search</h3>
@@ -35,13 +35,11 @@ export default {
   methods: {
     async getUser(username) {
       this.isLoading = true;
-
       try {
         const res = await getUserFromGithub(username);
         this.user = res.data;
       } catch (err) {
         this.error = err;
-        console.log("Error:", err);
       }
 
       console.log("get User:", this.user);
@@ -58,5 +56,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+*{
+  scroll-behavior: smooth;
 }
 </style>
