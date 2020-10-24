@@ -7,18 +7,18 @@
             <md-card>
                 <md-card-header>
                     <md-card-header-text>
-                        <div class="md-title">{{user.data.name}}</div>
+                        <div class="md-title">{{user.name}}</div>
                         <div class="md-subhead">Github User</div>
                     </md-card-header-text>
 
                     <md-card-media md-medium>
-                        <img :src="user.data.avatar_url" alt="user_avatar">
+                        <img :src="user.avatar_url" alt="user_avatar">
                     </md-card-media>
                 </md-card-header>
 
                 <md-card-actions>
                     <md-button>  
-                        Followers:{{user.data.followers}}  
+                        Followers:{{user.followers}}  
                     </md-button>
                 </md-card-actions>
             </md-card>
