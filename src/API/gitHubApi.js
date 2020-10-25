@@ -1,11 +1,20 @@
 import axios from 'axios';
-const gitApiUrl = 'https://api.github.com';
-const usersPath = 'users';
-const followingPath = 'following';
-const repoPath = 'repos';
-const headers = {
-    Accept: 'application/vnd.github.v3+json'
-};
+import env from '../enviorment/env';
+
+const usersPath = "users"
+const followingPath ="following"
+const repoPath ="repos"
+let gitApiUrl ;
+let headers ;
+
+if(process.env.NODE_ENV === 'development'){
+    gitApiUrl = env.development.GITHUB_API_URL; 
+   headers = env.development.API_HEADER;
+}else if(process.env.NODE_ENV === 'production'){
+    gitApiUrl = env.development.GITHUB_API_URL; 
+    headers = env.development.API_HEADER;
+}
+
 export const getUserFromGithub = (username) => {
     const url = `${gitApiUrl}/${usersPath}/${username}`;
     return axios.get(url, { headers });

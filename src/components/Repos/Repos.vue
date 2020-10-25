@@ -45,7 +45,6 @@ export default {
         const res = await getRepoFromGithub(this.user.login);
         this.userReposList = res.data;
         this.userRepo = this.userReposList[0];
-        console.log("userRepo:", this.userRepo);
       } catch (err) {
         console.log(err);
       }

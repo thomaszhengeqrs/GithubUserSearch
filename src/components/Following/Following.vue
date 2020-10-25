@@ -62,7 +62,6 @@ export default {
       } catch (err) {
         console.log(err);
       }
-
       this.loading = false;
     },
     async loadMore() {
@@ -76,13 +75,10 @@ export default {
         );
         if (res.data.length) {
           this.displayList = [...this.displayList, ...res.data];
-
-          
         }
         if (res.data.length < 10) {
           this.disabled = true;
-        }
-        
+        }        
       } catch (err) {
         console.log(err);
       }

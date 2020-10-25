@@ -9,7 +9,7 @@
     </div>
     <div v-else-if="error">
       <md-content class="md-accent">
-        <h2 class="error-msg">User Not Found: {{ error.message }}</h2>
+        <h2 class="error-msg"> {{ error}}</h2>
       </md-content>
     </div>
     <div v-else>
@@ -31,7 +31,7 @@ export default {
     return {
       user: "",
       isLoading: false,
-      error: false,
+      error: "",
     };
   },
   methods: {
@@ -42,7 +42,11 @@ export default {
         const res = await getUserFromGithub(username);
         this.user = res.data;
       } catch (err) {
-        this.error = err;
+        if( err.response.status == 404){
+          this.error = `We couldn’t find any repositories matching user: ${username}`
+        }else{
+          this.error = err.message
+        }
       }
       console.log("get User:", this.user);
       this.isLoading = false;
