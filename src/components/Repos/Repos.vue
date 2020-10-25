@@ -1,7 +1,10 @@
 <template>
   <div class="repos-container">
     <h1>
-      User The <span class="user_data">{{ this.user.name }}</span> with
+      User The 
+      <span class="user_data" v-if="this.user.name">{{ this.user.name }}</span> 
+      <span class="user_data" v-else>{{ this.user.login }}</span>
+      with
       <span class="user_data">{{ this.user.followers }}</span> followers is
       following <span class="user_data">{{ this.user.following }}</span>
     </h1>

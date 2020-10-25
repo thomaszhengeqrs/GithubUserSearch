@@ -7,7 +7,8 @@
             <md-card>
                 <md-card-header>
                     <md-card-header-text>
-                        <div class="md-title">{{user.name}}</div>
+                        <div class="md-title" v-if="user.name">{{user.name}}</div>
+                        <div class="md-title" v-else>{{user.login}}</div>
                         <div class="md-subhead">Github User</div>
                     </md-card-header-text>
 
