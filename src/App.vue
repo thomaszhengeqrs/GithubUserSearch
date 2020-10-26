@@ -38,7 +38,11 @@ export default {
     async getUser(username) {
       this.isLoading = true;
       this.user = '';
-      try {
+      if(username == ''){
+        this.error = 'The Search Bar cannot be empty';
+        this.isLoading = false;
+      }else{
+        try {
         const res = await getUserFromGithub(username);
         this.user = res.data;
       } catch (err) {
@@ -49,6 +53,8 @@ export default {
         }
       }
       console.log("get User:", this.user);
+      }
+      
       this.isLoading = false;
     },
   },
