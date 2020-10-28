@@ -8,6 +8,7 @@ This project is supported by Github's Api.
 
 * Clone or download this project form this page to your local machine.
 * In your local file, open terminal and run.
+* CAUTION: It would caused error in the latest version of Node.js 15.0.1. It's recommanded to use previous version which is more stable.
 
 ```
 npm install
