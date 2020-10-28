@@ -38,7 +38,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
 
 .md-card {
     width: 320px;

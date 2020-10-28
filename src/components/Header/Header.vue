@@ -39,7 +39,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
 .header {
   display: fixed;
 }
@@ -48,7 +48,9 @@ export default {
   flex-direction: row;
   background-color: #fff;
   padding: 10px 0;
-  input {
+  
+}
+input {
     font-size: 100%;
     line-height: 1.15;
     height: 40px;
@@ -58,6 +60,5 @@ export default {
     padding: 10px;
     box-shadow: none;
   }
-}
 </style>
 

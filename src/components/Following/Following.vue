@@ -104,7 +104,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
 .list-container {
   display: flex;
   justify-content: center;
